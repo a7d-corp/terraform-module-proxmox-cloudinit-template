@@ -4,10 +4,9 @@ locals {
 
 resource "null_resource" "cloudinit_userdata" {
   connection {
-    type     = var.connection_type
-    user     = var.connection_user
-    password = var.connection_password
-    host     = var.connection_host
+    type = var.conn_type
+    user = var.conn_user
+    host = var.conn_target
   }
 
   provisioner "file" {
@@ -20,10 +19,9 @@ resource "null_resource" "cloudinit_userdata" {
 
 resource "null_resource" "cloudinit_network" {
   connection {
-    type     = var.connection_type
-    user     = var.connection_user
-    password = var.connection_password
-    host     = var.connection_host
+    type = var.conn_type
+    user = var.conn_user
+    host = var.conn_target
   }
 
   provisioner "file" {

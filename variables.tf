@@ -1,16 +1,12 @@
-variable "connection_type" {
+variable "conn_type" {
   type = string
 }
 
-variable "connection_user" {
+variable "conn_user" {
   type = string
 }
 
-variable "connection_password" {
-  type = string
-}
-
-variable "connection_host" {
+variable "conn_target" {
   type = string
 }
 

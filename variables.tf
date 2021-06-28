@@ -60,3 +60,8 @@ variable "search_domains" {
 variable "dns_servers" {
   type = list(any)
 }
+
+variable "user_data_blob" {
+  default = {}
+  type    = map(any)
+}

@@ -11,7 +11,7 @@ resource "null_resource" "cloudinit_userdata" {
 
   provisioner "file" {
     content = templatefile("${path.module}/templates/userdata.tpl", {
-      hostname = "${var.instance_name}.${var.instance_domain}"
+      user_data_blob = yamlencode(var.user_data_blob)
     })
     destination = "${local.snippet_dir_path}/${var.snippet_dir}/user-${var.snippet_file_base}"
   }

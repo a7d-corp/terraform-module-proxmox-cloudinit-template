@@ -2,10 +2,10 @@ version: 2
 ethernets:
   eth0:
     match:
-      macaddress: '${primary_mac}'
+      macaddress: '${primary_network.macaddr}'
     addresses:
-      - ${primary_ip}
-    gateway4: ${primary_ip_gateway}
+      - ${primary_network.ip}/${primary_network.netmask}
+    gateway4: ${primary_network.gateway}
     nameservers:
       search:
 %{for domain in search_domains ~}
@@ -15,8 +15,12 @@ ethernets:
 %{for ns in dns_servers ~}
         - ${ns}
 %{ endfor ~}
-  eth1:
+%{ for network in extra_networks ~}
+  ${network.name}:
     match:
-      macaddress: '${secondary_mac}'
+      macaddress: '${network.macaddr}'
     addresses:
-      - ${secondary_ip}
+%{ for ip in network.ips ~}
+      - ${ip}/${network.netmask}
+%{ endfor ~}
+%{ endfor ~}

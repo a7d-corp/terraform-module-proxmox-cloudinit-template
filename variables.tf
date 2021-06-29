@@ -27,13 +27,13 @@ variable "instance_domain" {
 }
 
 variable "primary_network" {
-  type = map(any)
   default = {
     gateway = "192.168.1.1"
     ip      = "192.16.1.2"
     macaddr = "00:00:00:00:00:00"
     netmask = 24
   }
+  type = map(any)
 }
 
 variable "extra_networks" {

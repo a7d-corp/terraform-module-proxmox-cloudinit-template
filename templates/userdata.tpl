@@ -1,2 +1,2 @@
 #cloud-config
-hostname: ${hostname}
+${user_data_blob}

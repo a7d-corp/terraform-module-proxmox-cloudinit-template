@@ -36,7 +36,7 @@ variable "primary_network" {
   }
 }
 
-variable "additional_networks" {
+variable "extra_networks" {
   default = {}
   type    = map(any)
 }

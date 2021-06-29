@@ -44,7 +44,6 @@ module "cloudinit_template" {
   snippet_file_base = "my-instance"
 
   instance_name   = "my-instance"
-  instance_domain = "domain.com"
 
   primary_network = {
     gateway = "172.16.0.1"

@@ -26,13 +26,10 @@ resource "null_resource" "cloudinit_network" {
 
   provisioner "file" {
     content = templatefile("${path.module}/templates/network.tpl", {
-      primary_ip         = "${var.primary_ip}/${var.primary_network_cidr_netmask}"
-      primary_ip_gateway = var.primary_ip_gateway
-      primary_mac        = var.primary_mac
-      secondary_ip       = "${var.secondary_ip}/${var.secondary_network_cidr_netmask}"
-      secondary_mac      = var.secondary_mac
-      search_domains     = var.search_domains
-      dns_servers        = var.dns_servers
+      primary_network = var.primary_network
+      extra_networks  = var.extra_networks
+      search_domains  = var.search_domains
+      dns_servers     = var.dns_servers
     })
     destination = "${local.snippet_dir_path}/${var.snippet_dir}/network-${var.snippet_file_base}"
   }

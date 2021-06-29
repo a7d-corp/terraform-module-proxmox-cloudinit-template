@@ -26,33 +26,21 @@ variable "instance_domain" {
   type = string
 }
 
-variable "primary_network_cidr_netmask" {
-  type = number
+variable "primary_network" {
+  type = map(any)
+  default = {
+    gateway = "192.168.1.1"
+    ip      = "192.16.1.2"
+    macaddr = "00:00:00:00:00:00"
+    netmask = 24
+  }
 }
 
-variable "primary_ip" {
-  type = string
+variable "additional_networks" {
+  default = {}
+  type    = map(any)
 }
 
-variable "primary_ip_gateway" {
-  type = string
-}
-
-variable "primary_mac" {
-  type = string
-}
-
-variable "secondary_network_cidr_netmask" {
-  type = number
-}
-
-variable "secondary_ip" {
-  type = string
-}
-
-variable "secondary_mac" {
-  type = string
-}
 variable "search_domains" {
   type = list(any)
 }

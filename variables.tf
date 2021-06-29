@@ -29,10 +29,6 @@ variable "instance_name" {
   type        = string
 }
 
-variable "instance_domain" {
-  type = string
-}
-
 variable "primary_network" {
   description = "Configuration for the primary network interface (required)."
   type = object({

@@ -58,6 +58,11 @@ module "cloudinit_template" {
     macaddr = "00:00:00:00:00:11"
     name    = "eth1"
     netmask = 24
+  }, {
+    ips     = ["10.1.1.100", "10.1.1.200"]
+    macaddr = "00:00:00:00:00:22"
+    name    = "eth2"
+    netmask = 20
   }]
 
   search_domains = ["domain.com"]

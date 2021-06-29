@@ -1,25 +1,32 @@
 variable "conn_type" {
-  type = string
+  description = "Connection type for the file provisioner."
+  type        = string
 }
 
 variable "conn_user" {
-  type = string
+  description = "Connection user for the file provisioner."
+  type        = string
 }
 
 variable "conn_target" {
-  type = string
+  description = "Connection host for the file provisioner."
+  type        = string
 }
 
 variable "snippet_dir" {
-  type = string
+  default     = "/var/lib/vz"
+  description = "Location of the snippet directory."
+  type        = string
 }
 
 variable "snippet_file_base" {
-  type = string
+  description = "Starting stub of the snippet file name."
+  type        = string
 }
 
 variable "instance_name" {
-  type = string
+  description = "Name of the instance (will be used as part of the snippet file name."
+  type        = string
 }
 
 variable "instance_domain" {
@@ -27,16 +34,17 @@ variable "instance_domain" {
 }
 
 variable "primary_network" {
-  default = {
-    gateway = "192.168.1.1"
-    ip      = "192.16.1.2"
-    macaddr = "00:00:00:00:00:00"
-    netmask = 24
-  }
-  type = map(any)
+  description = "Configuration for the primary network interface (required)."
+  type = object({
+    gateway = string
+    ip      = string
+    macaddr = string
+    netmask = number
+  })
 }
 
 variable "extra_networks" {
+  description = "Configuration of additional network interfaces."
   type = list(object({
     ips     = list(string)
     macaddr = string
@@ -46,14 +54,17 @@ variable "extra_networks" {
 }
 
 variable "search_domains" {
-  type = list(any)
+  description = "List of search domains."
+  type        = list(string)
 }
 
 variable "dns_servers" {
-  type = list(any)
+  description = "List of DNS servers."
+  type        = list(string)
 }
 
 variable "user_data_blob" {
-  default = {}
-  type    = map(any)
+  description = "JSON userdata blob which will be written out to templated file directly (as YAML)."
+  default     = {}
+  type        = map(any)
 }

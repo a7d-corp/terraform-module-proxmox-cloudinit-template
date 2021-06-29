@@ -37,8 +37,12 @@ variable "primary_network" {
 }
 
 variable "extra_networks" {
-  default = {}
-  type    = map(any)
+  type = list(object({
+    ips     = list(string)
+    macaddr = string
+    name    = string
+    netmask = number
+  }))
 }
 
 variable "search_domains" {

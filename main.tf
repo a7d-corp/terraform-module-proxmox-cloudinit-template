@@ -1,7 +1,3 @@
-locals {
-  snippet_dir_path = "/var/lib/vz"
-}
-
 resource "null_resource" "cloudinit_userdata" {
   connection {
     type = var.conn_type
@@ -13,7 +9,7 @@ resource "null_resource" "cloudinit_userdata" {
     content = templatefile("${path.module}/templates/userdata.tpl", {
       user_data_blob = yamlencode(var.user_data_blob)
     })
-    destination = "${local.snippet_dir_path}/${var.snippet_dir}/user-${var.snippet_file_base}"
+    destination = "${var.snippet_root_dir}/${var.snippet_dir}/user-${var.snippet_file_base}"
   }
 }
 
@@ -31,6 +27,6 @@ resource "null_resource" "cloudinit_network" {
       search_domains  = var.search_domains
       dns_servers     = var.dns_servers
     })
-    destination = "${local.snippet_dir_path}/${var.snippet_dir}/network-${var.snippet_file_base}"
+    destination = "${var.snippet_root_dir}/${var.snippet_dir}/network-${var.snippet_file_base}"
   }
 }

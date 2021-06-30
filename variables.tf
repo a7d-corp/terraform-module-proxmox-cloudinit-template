@@ -13,10 +13,15 @@ variable "conn_target" {
   type        = string
 }
 
-variable "snippet_dir" {
+variable "snippet_root_dir" {
   default     = "/var/lib/vz"
   description = "Location of the snippet directory."
   type        = string
+}
+
+variable "snippet_dir" {
+  default = "snippets"
+  type    = string
 }
 
 variable "snippet_file_base" {

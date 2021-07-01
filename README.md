@@ -35,7 +35,7 @@ This module can only template cloudinit config files out to a single host.
 
 ```hcl
 module "cloudinit_template" {
-  source = "https://github.com/glitchcrab/terraform-module-proxmox-cloudinit-template"
+  source = "github.com/glitchcrab/terraform-module-proxmox-cloudinit-template"
 
   conn_type         = "ssh"
   conn_user         = "root"

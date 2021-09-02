@@ -23,7 +23,7 @@ resource "null_resource" "cloudinit_network" {
   provisioner "file" {
     content = templatefile("${path.module}/templates/network.tpl", {
       primary_network = var.primary_network
-      extra_networks  = var.extra_networks
+      extra_networks  = var.extra_networks != null ? var.extra_networks : []
       search_domains  = var.search_domains
       dns_servers     = var.dns_servers
     })

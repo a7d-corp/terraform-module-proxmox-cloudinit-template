@@ -45,13 +45,15 @@ variable "primary_network" {
 }
 
 variable "extra_networks" {
+  default     = null
   description = "Configuration of additional network interfaces."
-  type = list(object({
-    ips     = list(string)
-    macaddr = string
-    name    = string
-    netmask = number
-  }))
+  type        = any
+  #  type = list(object({
+  #  ips     = list(string)
+  #  macaddr = string
+  #  name    = string
+  # netmask = number
+  #})
 }
 
 variable "search_domains" {

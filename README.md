@@ -5,7 +5,7 @@ Terraform module to template out cloudinit files to Proxmox hosts.
 
 ## Limitations
 
-This module can only template cloudinit config files out to a single host.
+This module can only template cloudinit config files out to a single host. To get around this I use an NFS mount on all hosts with `snippets` enabled. That way you can template out to a single host in your cluster irrespective on the host you want to land the instance on.
 
 ## Variables
 

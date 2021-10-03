@@ -67,7 +67,7 @@ variable "dns_servers" {
 }
 
 variable "user_data_blob" {
-  description = "JSON userdata blob which will be written out to templated file directly (as YAML)."
+  description = "Userdata blob, can be any format as long as it will produce valid YAML via yamlencode()."
   default     = {}
-  type        = map(any)
+  type        = any
 }

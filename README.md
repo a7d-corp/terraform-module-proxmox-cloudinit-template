@@ -29,7 +29,7 @@ This module can only template cloudinit config files out to a single host. To ge
 | `search_domains`          | list(string) | `true`   | List of search domains.          |
 | `snippet_dir`             | string       | `true`   | Path to the snippets dir on the target host (see the [Proxmox docs](https://pve.proxmox.com/wiki/Storage)) |
 | `snippet_file_base`       | string       | `true`   | Opening stub of the templated file names (must be unique to avoid collisions). |
-| `user_data_blob`          | map(any)     | `false`  | Blob containing userdata - converted to YAML during file creation (see the [Cloudinit docs](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)). |
+| `user_data_blob`          | map(any)     | `false`  | Cloudinit userdata in YAML format - must be valid YAML (see the [Cloudinit docs](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)). |
 
 ## Sample config
 

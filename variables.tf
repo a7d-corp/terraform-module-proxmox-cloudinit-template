@@ -67,7 +67,7 @@ variable "dns_servers" {
 }
 
 variable "user_data_blob" {
-  description = "Userdata blob, can be any format as long as it will produce valid YAML via yamlencode()."
-  default     = {}
+  description = "Userdata blob, must be valid YAML."
+  default     = ""
   type        = any
 }

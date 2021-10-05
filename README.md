@@ -31,6 +31,12 @@ This module can only template cloudinit config files out to a single host. To ge
 | `snippet_file_base`       | string       | `true`   | Opening stub of the templated file names (must be unique to avoid collisions). |
 | `user_data_blob`          | map(any)     | `false`  | Cloudinit userdata in YAML format - must be valid YAML (see the [Cloudinit docs](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)). |
 
+## Outputs
+
+| name         | type   | description                   |
+|--------------|--------|-------------------------------|
+| `primary_ip` | string | The primary IP of the server. |
+
 ## Sample config
 
 ```hcl

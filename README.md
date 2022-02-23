@@ -14,6 +14,7 @@ This module can only template cloudinit config files out to a single host. To ge
 | `conn_target`             | string       | `true`   | Host to provision the cloudinit files to (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
 | `conn_type`               | string       | `true`   | File provisioner connection type (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
 | `conn_user`               | string       | `true`   | User to connect as (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
+| `conn_host_key`           | string       | `true`   | SSH pub key of connection target (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
 | `dns_servers`             | list(string) | `true`   | List of DNS servers.             |
 | `extra_networks`          | list(object) | `false`  | List of objects which represent additional network interfaces. Can be repeated `n` times. |
 | `extra_networks.ips`      | list(string) | `false`  | List of IPs to assign to the interface |
@@ -46,6 +47,7 @@ module "cloudinit_template" {
   conn_type         = "ssh"
   conn_user         = "root"
   conn_target       = "proxmox-host.domain.com"
+  conn_host_key     = "AAAAC3NzaC1lZDI1NTE5AAAAIO6GRJ4+I//VifkqcA3fEG38uFp95t+gQXyQivmUDxHy"
   snippet_dir       = "/var/lib/vz"
   snippet_file_base = "my-instance"
 

@@ -1,8 +1,9 @@
 resource "null_resource" "cloudinit_userdata" {
   connection {
-    type = var.conn_type
-    user = var.conn_user
-    host = var.conn_target
+    type     = var.conn_type
+    user     = var.conn_user
+    host     = var.conn_target
+    host_key = var.conn_host_key
   }
 
   provisioner "file" {
@@ -15,9 +16,10 @@ resource "null_resource" "cloudinit_userdata" {
 
 resource "null_resource" "cloudinit_network" {
   connection {
-    type = var.conn_type
-    user = var.conn_user
-    host = var.conn_target
+    type     = var.conn_type
+    user     = var.conn_user
+    host     = var.conn_target
+    host_key = var.conn_host_key
   }
 
   provisioner "file" {

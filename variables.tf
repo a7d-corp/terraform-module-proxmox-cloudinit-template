@@ -13,11 +13,6 @@ variable "conn_target" {
   type        = string
 }
 
-variable "conn_host_key" {
-  description = "Host SSH public key for the file provisioner."
-  type        = string
-}
-
 variable "snippet_root_dir" {
   default     = "/var/lib/vz"
   description = "Location of the snippet directory."

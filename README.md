@@ -14,6 +14,7 @@ This module can only template cloudinit config files out to a single host. To ge
 | `conn_target`             | string       | `true`   | Host to provision the cloudinit files to (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
 | `conn_type`               | string       | `true`   | File provisioner connection type (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
 | `conn_user`               | string       | `true`   | User to connect as (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
+| `conn_ssh_key`            | string       | `true`   | Base64 encoded SSH private key (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
 | `dns_servers`             | list(string) | `true`   | List of DNS servers.             |
 | `extra_networks`          | list(object) | `false`  | List of objects which represent additional network interfaces. Can be repeated `n` times. |
 | `extra_networks.ips`      | list(string) | `false`  | List of IPs to assign to the interface |

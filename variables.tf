@@ -13,6 +13,11 @@ variable "conn_target" {
   type        = string
 }
 
+variable "conn_ssh_key" {
+  description = "String containing a base64 encoded SSH private key."
+  type        = string
+}
+
 variable "snippet_root_dir" {
   default     = "/var/lib/vz"
   description = "Location of the snippet directory."

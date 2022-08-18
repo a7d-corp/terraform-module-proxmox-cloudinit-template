@@ -1,6 +1,6 @@
 version: 2
 ethernets:
-  eth0:
+  ${primary_network.name}:
     match:
       macaddress: '${primary_network.macaddr}'
     addresses:

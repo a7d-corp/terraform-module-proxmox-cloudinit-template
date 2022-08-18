@@ -45,6 +45,7 @@ variable "primary_network" {
     gateway = string
     ip      = string
     macaddr = string
+    name    = string
     netmask = number
   })
 }

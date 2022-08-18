@@ -26,6 +26,7 @@ This module can only template cloudinit config files out to a single host. To ge
 | `primary_network.gateway` | string       | `true`   | Gateway IP for the interface.    |
 | `primary_network.ip`      | string       | `true`   | IP address for the interface in dotted octet notation (e.g. `192.168.1.2`). |
 | `primary_network.macaddr` | string       | `true`   | MAC address for the interface.   |
+| `primary_network.name   ` | string       | `true`   | Name of the primary interface (e.g. 'eth0'). |
 | `primary_network.netmask` | number       | `true`   | Netmask in CIDR notation (e.g `24`). |
 | `search_domains`          | list(string) | `true`   | List of search domains.          |
 | `snippet_dir`             | string       | `true`   | Path to the snippets dir on the target host (see the [Proxmox docs](https://pve.proxmox.com/wiki/Storage)) |
@@ -56,6 +57,7 @@ module "cloudinit_template" {
     gateway = "172.16.0.1"
     ip      = "172.16.0.100"
     macaddr = "00:00:00:00:00:00"
+    name    = "eth0"
     netmask = 24
   }
 

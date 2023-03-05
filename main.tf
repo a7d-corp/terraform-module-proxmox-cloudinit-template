@@ -1,5 +1,5 @@
 data "template_file" "userdata" {
-  template = file("${path.module}/templates/userdata.tpl")
+  template = "${file("${path.module}/userdata.tpl")}"
 
   vars {
     user_data_blob = var.user_data_blob
@@ -15,13 +15,13 @@ resource "null_resource" "cloudinit_userdata" {
   }
 
   provisioner "file" {
-    content     = data.template_file.userdata.rendered
+    content     = "${data.template_file.userdata.rendered}"
     destination = "${var.snippet_root_dir}/${var.snippet_dir}/user-${var.snippet_file_base}"
   }
 }
 
 data "template_file" "network" {
-  template = file("${path.module}/templates/network.tpl")
+  template = "${file("${path.module}/templates/network.tpl")}"
 
   vars {
     primary_network = var.primary_network
@@ -40,7 +40,7 @@ resource "null_resource" "cloudinit_network" {
   }
 
   provisioner "file" {
-    content     = data.template_file.network.rendered
+    content     = "${data.template_file.network.rendered}"
     destination = "${var.snippet_root_dir}/${var.snippet_dir}/network-${var.snippet_file_base}"
   }
 }

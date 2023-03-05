@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2023-03-05
+
 ### Added
 
 - Added changelog.
@@ -15,4 +17,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Experimental optional attributes option.
 
-[Unreleased]: https://github.com/a7d-corp/terraform-module-proxmox-cloudinit-template/tree/main
+[Unreleased]: https://github.com/a7d-corp/terraform-module-proxmox-cloudinit-template/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/a7d-corp/terraform-module-proxmox-cloudinit-template/releases/tag/v1.0.0

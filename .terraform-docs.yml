@@ -1,0 +1,11 @@
+formatter: markdown table
+output:
+  file: README.md
+settings:
+  anchor: false
+  default: false
+  escape: false
+  hide-empty: true
+sort:
+  enabled: true
+  by: required

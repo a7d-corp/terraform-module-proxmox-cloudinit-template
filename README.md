@@ -7,37 +7,50 @@ Terraform module to template out cloudinit files to Proxmox hosts.
 
 This module can only template cloudinit config files out to a single host. To get around this I use an NFS mount on all hosts with `snippets` enabled. That way you can template out to a single host in your cluster irrespective on the host you want to land the instance on.
 
-## Variables
+<!-- BEGIN_TF_DOCS -->
+## Requirements
 
-| name                      | type         | required | description                      |
-|---------------------------|--------------|----------|----------------------------------|
-| `conn_target`             | string       | `true`   | Host to provision the cloudinit files to (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
-| `conn_type`               | string       | `true`   | File provisioner connection type (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
-| `conn_user`               | string       | `true`   | User to connect as (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
-| `conn_ssh_key`            | string       | `true`   | Base64 encoded SSH private key (see the [Terraform docs](https://www.terraform.io/docs/language/resources/provisioners/connection.html)). |
-| `dns_servers`             | list(string) | `true`   | List of DNS servers.             |
-| `extra_networks`          | list(object) | `false`  | List of objects which represent additional network interfaces. Can be repeated `n` times. |
-| `extra_networks.ips`      | list(string) | `false`  | List of IPs to assign to the interface |
-| `extra_networks.macaddr`  | string       | `false`  | MAC address for the interface.   |
-| `extra_networks.name`     | string       | `false`  | Device ID (see the [Cloudinit docs](https://cloudinit.readthedocs.io/en/latest/topics/network-config-format-v2.html#device-configuration-ids)). |
-| `extra_networks.netmask`  | number       | `false`  | Netmask in CIDR notation (e.g `24`). |
-| `instance_name`           | string       | `true`   | Name of the instance which will consume the cloudinit files. |
-| `primary_network`         | object       | `true`   | Object which describes the primary network interface. |
-| `primary_network.gateway` | string       | `true`   | Gateway IP for the interface.    |
-| `primary_network.ip`      | string       | `true`   | IP address for the interface in dotted octet notation (e.g. `192.168.1.2`). |
-| `primary_network.macaddr` | string       | `true`   | MAC address for the interface.   |
-| `primary_network.name   ` | string       | `true`   | Name of the primary interface (e.g. 'eth0'). |
-| `primary_network.netmask` | number       | `true`   | Netmask in CIDR notation (e.g `24`). |
-| `search_domains`          | list(string) | `true`   | List of search domains.          |
-| `snippet_dir`             | string       | `true`   | Path to the snippets dir on the target host (see the [Proxmox docs](https://pve.proxmox.com/wiki/Storage)) |
-| `snippet_file_base`       | string       | `true`   | Opening stub of the templated file names (must be unique to avoid collisions). |
-| `user_data_blob`          | map(any)     | `false`  | Cloudinit userdata in YAML format - must be valid YAML (see the [Cloudinit docs](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)). |
+| Name | Version |
+|------|---------|
+| terraform | >= 0.14.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| null | n/a |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [null_resource.cloudinit_network](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.cloudinit_userdata](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+
+## Inputs
+
+| Name | Description | Type | Required |
+|------|-------------|------|:--------:|
+| conn_ssh_key | String containing a base64 encoded SSH private key. | `string` | yes |
+| conn_target | Connection host for the file provisioner. | `string` | yes |
+| conn_type | Connection type for the file provisioner. | `string` | yes |
+| conn_user | Connection user for the file provisioner. | `string` | yes |
+| dns_servers | List of DNS servers. | `list(string)` | yes |
+| instance_name | Name of the instance (will be used as part of the snippet file name. | `string` | yes |
+| primary_network | Configuration for the primary network interface (required). | <pre>object({<br>    gateway = string<br>    ip      = string<br>    macaddr = string<br>    name    = string<br>    netmask = number<br>  })</pre> | yes |
+| search_domains | List of search domains. | `list(string)` | yes |
+| snippet_file_base | Starting stub of the snippet file name. | `string` | yes |
+| extra_networks | Configuration of additional network interfaces. | `any` | no |
+| snippet_dir | n/a | `string` | no |
+| snippet_root_dir | Location of the snippet directory. | `string` | no |
+| user_data_blob | Userdata blob, must be valid YAML. | `any` | no |
 
 ## Outputs
 
-| name         | type   | description                   |
-|--------------|--------|-------------------------------|
-| `primary_ip` | string | The primary IP of the server. |
+| Name | Description |
+|------|-------------|
+| primary_ip | The primary IP of the server. |
+<!-- END_TF_DOCS -->
 
 ## Sample config
 
